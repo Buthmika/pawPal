@@ -197,7 +197,33 @@ body {
   margin-top: 50px;
   flex-wrap: wrap;
 }
-
+.stat-item {
+  text-align: center;
+  padding: 30px 25px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(74, 144, 226, 0.15);
+  width: 200px;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.stat-item:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(74, 144, 226, 0.25);
+}
+.stat-item h3 {
+  font-size: 52px;
+  color: var(--primary-color);
+  margin-bottom: 12px;
+  font-weight: 800;
+  font-family: 'Nunito', sans-serif;
+}
+.stat-item p {
+  font-size: 18px;
+  color: var(--text-color);
+  font-weight: 600;
+}
 
 /* Footer */
 .footer {
