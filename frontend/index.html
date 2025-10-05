@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawPal - Pet Care & Booking System</title>
+    <meta name="description" content="Complete pet care management system with veterinary booking, health records, and vaccination tracking">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#667eea">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="logo-loading">
+                <i class="fas fa-paw"></i>
+                <span>PawPal</span>
+            </div>
+            <div class="loading-spinner"></div>
+            <p>Loading your pet care system...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="main-nav" class="main-nav" role="navigation">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="/" class="brand-link">
+                    <i class="fas fa-paw"></i>
+                    <span>PawPal</span>
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="/" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="/dashboard" class="nav-link" data-page="dashboard">Dashboard</a></li>
+                    <li><a href="/pets" class="nav-link" data-page="pets">My Pets</a></li>
+                    <li><a href="/appointments" class="nav-link" data-page="appointments">Appointments</a></li>
+                    <li><a href="/vets" class="nav-link" data-page="vets">Find Vets</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="user-menu" id="user-menu">
+                        <button class="user-menu-trigger" id="user-menu-trigger">
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <span class="user-name">Guest</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        
+                        <div class="user-dropdown" id="user-dropdown">
+                            <div class="user-info">
+                                <div class="user-avatar-large">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="user-details">
+                                    <span class="user-name">Guest User</span>
+                                    <span class="user-role">Pet Owner</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <ul class="dropdown-menu">
+                                <li><a href="/profile"><i class="fas fa-user-edit"></i> Profile</a></li>
+                                <li><a href="/settings"><i class="fas fa-cog"></i> Settings</a></li>
+                                <li><a href="/help"><i class="fas fa-question-circle"></i> Help</a></li>
+                                <li class="dropdown-divider"></li>
+                                <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="auth-buttons" id="auth-buttons">
+                        <button class="btn btn-outline" id="login-btn">Login</button>
+                        <button class="btn btn-primary" id="signup-btn">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="app-content" class="app-content">
+        <!-- Home Page -->
+        <section id="home-page" class="page active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-background">
+                    <div class="hero-pattern"></div>
+                </div>
+                <div class="container">
+                    <div class="hero-content">
+                        <div class="hero-text">
+                            <h1 class="hero-title">
+                                Complete Pet Care
+                                <span class="text-gradient">Made Simple</span>
+                            </h1>
+                            <p class="hero-description">
+                                Manage your pet's health, book veterinary appointments, 
+                                track vaccinations, and connect with certified veterinarians 
+                                all in one secure platform.
+                            </p>
+                            <div class="hero-actions">
+                                <button class="btn btn-primary btn-large" id="hero-signup">
+                                    Get Started Free
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                                <button class="btn btn-outline btn-large" id="hero-demo">
+                                    <i class="fas fa-play"></i>
+                                    Watch Demo
+                                </button>
+                            </div>
+                            <div class="hero-stats">
+                                <div class="stat">
+                                    <span class="stat-number">1000+</span>
+                                    <span class="stat-label">Happy Pets</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">500+</span>
+                                    <span class="stat-label">Verified Vets</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">5000+</span>
+                                    <span class="stat-label">Appointments</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-visual">
+                            <div class="hero-image">
+                                <div class="floating-card card-1">
+                                    <i class="fas fa-heart"></i>
+                                    <span>Health Tracking</span>
+                                </div>
+                                <div class="floating-card card-2">
+                                    <i class="fas fa-calendar-check"></i>
+                                    <span>Easy Booking</span>
+                                </div>
+                                <div class="floating-card card-3">
+                                    <i class="fas fa-user-md"></i>
+                                    <span>Expert Vets</span>
+                                </div>
+                                <div class="main-illustration">
+                                    <i class="fas fa-dog"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features" id="features">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Everything You Need for Pet Care</h2>
+                        <p class="section-description">
+                            Comprehensive tools to keep your furry friends healthy and happy
+                        </p>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <h3>Pet Profiles</h3>
+                            <p>Create detailed profiles for each pet with photos, medical history, and important information.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <h3>Easy Booking</h3>
+                            <p>Book appointments with verified veterinarians based on their availability and specializations.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <h3>Health Records</h3>
+                            <p>Maintain comprehensive health records, vaccination schedules, and medical history.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <h3>Smart Reminders</h3>
+                            <p>Receive automated reminders for vaccinations, check-ups, and medication schedules.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <h3>Verified Vets</h3>
+                            <p>Connect with certified veterinarians who are verified and approved by our admin team.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Secure & Safe</h3>
+                            <p>Your pet's data is protected with enterprise-level security and encrypted storage.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How It Works -->
+            <section class="how-it-works">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">How PawPal Works</h2>
+                        <p class="section-description">Get started in just a few simple steps</p>
+                    </div>
+                    
+                    <div class="steps-container">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Register & Create Profiles</h3>
+                                <p>Sign up and create detailed profiles for each of your pets with photos and medical information.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Find & Connect with Vets</h3>
+                                <p>Browse verified veterinarians in your area and view their specializations and availability.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Book Appointments</h3>
+                                <p>Schedule appointments directly through the platform and receive confirmation notifications.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Track Health & Get Reminders</h3>
+                                <p>Maintain health records and receive automatic reminders for vaccines and check-ups.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <div class="container">
+                    <div class="cta-content">
+                        <h2>Ready to Give Your Pet the Best Care?</h2>
+                        <p>Join thousands of pet owners who trust PawPal for their pet care needs</p>
+                        <div class="cta-actions">
+                            <button class="btn btn-primary btn-large" id="cta-signup">
+                                Start Free Today
+                                <i class="fas fa-paw"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Other pages will be loaded dynamically -->
+        <section id="dashboard-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Dashboard</h1>
+                    <p>Welcome back! Here's an overview of your pet care activities.</p>
+                </div>
+                <div class="dashboard-content">
+                    <!-- Dashboard content will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <section id="pets-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1>My Pets</h1>
+                    <button class="btn btn-primary" id="add-pet-btn">
+                        <i class="fas fa-plus"></i> Add New Pet
+                    </button>
+                </div>
+                <div class="pets-content">
+                    <!-- Pets content will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <section id="appointments-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Appointments</h1>
+                    <button class="btn btn-primary" id="book-appointment-btn">
+                        <i class="fas fa-calendar-plus"></i> Book Appointment
+                    </button>
+                </div>
+                <div class="appointments-content">
+                    <!-- Appointments content will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <section id="vets-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Find Veterinarians</h1>
+                    <div class="search-filters">
+                        <!-- Search and filter controls -->
+                    </div>
+                </div>
+                <div class="vets-content">
+                    <!-- Vets content will be loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals Container -->
+    <div id="modals-container"></div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-paw"></i>
+                        <span>PawPal</span>
+                    </div>
+                    <p>Your trusted partner in pet care management. Connecting pet owners with certified veterinarians.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>For Pet Owners</h3>
+                    <ul>
+                        <li><a href="/pets">My Pets</a></li>
+                        <li><a href="/appointments">Appointments</a></li>
+                        <li><a href="/health-records">Health Records</a></li>
+                        <li><a href="/reminders">Reminders</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>For Veterinarians</h3>
+                    <ul>
+                        <li><a href="/vet-register">Join as Vet</a></li>
+                        <li><a href="/vet-dashboard">Vet Dashboard</a></li>
+                        <li><a href="/schedule">Manage Schedule</a></li>
+                        <li><a href="/patients">Patient Records</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="/help">Help Center</a></li>
+                        <li><a href="/contact">Contact Us</a></li>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 PawPal. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/cookies">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-functions-compat.js"></script>
+    
+    <script src="assets/js/config/firebase-config.js?v=3"></script>
+    <script src="assets/js/utils/constants.js?v=3"></script>
+    <script src="assets/js/utils/helpers.js?v=3"></script>
+    <script src="assets/js/services/auth-service.js?v=3"></script>
+    <script src="assets/js/services/pet-service.js?v=3"></script>
+    <script src="assets/js/services/data-service.js?v=3"></script>
+    <script src="assets/js/components/modal.js?v=3"></script>
+    <script src="assets/js/components/toast.js?v=3"></script>
+    <script src="assets/js/app.js?v=3"></script>
+</body>
+</html>
