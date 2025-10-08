@@ -862,4 +862,4 @@ window.addEventListener('load', () => {
 });
 
 // Export for external use
-window.PawPalApp = PawPalApp;
+window.PawPalApp = PawPalApp
